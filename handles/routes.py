@@ -3,29 +3,33 @@ from aiogram.filters import Command
 from aiogram.types import Message,ReplyKeyboardMarkup,KeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-from datebase.sql_select import init_first_db,init_second_db,add_users
+from datebase.sql_select import init_first_db,init_second_db,add_users,add_ann,select_sub
 from handles import Findcar
 from handles.State import group
 import aiogram
 router=Router()
 @router.message(Command("start"))
 async def Start(message:Message):
-    #await init_first_db()  #исползвал один раз
-    #await init_second_db() 
+    await init_first_db()  #исползвал один раз
+    await init_second_db() 
     name= message.from_user.first_name
     ID=message.from_user.id
     await add_users(ID,name)
     await message.answer(f"Привет {name} \nЯ помогу тебе мониторить появление крутых тачек по локальному API.",reply_markup=Findcar.get_main_reply_keyboard())
 @router.message(F.text == "Найти машину")
 async def Find(message:Message,state=FSMContext):
-    await message.answer(f"Какую марка вам нужно?",reply_markup=Findcar.get_car_brand_keyboard().as_markup(resize_keyboard=True))
+    await message.answer(f"Какую марка вам нужно?\nЕсли хотите отменит нажмите /channel",reply_markup=Findcar.get_car_brand_keyboard().as_markup(resize_keyboard=True))
     await state.set_state(group.brand)
+@router.message(Command("channel"))
+async def Channel(message:Message,state:FSMContext):
+    await state.clear()
+    await message.answer("Вы успешно отменили!")
 @router.message(group.brand)
 async def Brand(message:Message,state=FSMContext):
     if not message.text in list(Findcar.bran_model.keys()):
         return
     await state.update_data(brand=message.text)
-    await message.answer(f"Какую модель вам нужно?",reply_markup=Findcar.get_car_model_keyboard(message.text).as_markup(resize_keyboard=True))
+    await message.answer(f"Какую модель вам нужно?\nЕсли хотите отменит нажмите /channel",reply_markup=Findcar.get_car_model_keyboard(message.text).as_markup(resize_keyboard=True))
     await state.set_state(group.model)
 @router.message(group.model)
 async def Model(message:Message,state:FSMContext):
@@ -36,10 +40,11 @@ async def Model(message:Message,state:FSMContext):
         return
     print("i am here")
     await state.update_data(model=message.text)
-    await message.answer(f"Какой ваш бюджет?")
+    await message.answer(f"Какой ваш бюджет?\nЕсли хотите отменит нажмите /channel")
     await state.set_state(group.price)
 @router.message(group.price)
 async def Model(message:Message,state:FSMContext):
+    ID=message.from_user.id
     if not message.text.isdigit():
         return
     data= await state.get_data()
@@ -47,10 +52,18 @@ async def Model(message:Message,state:FSMContext):
     brand=data.get("brand")
     price=int(message.text)
     await state.clear()
+    await add_ann(ID,brand,model,price)
     await message.answer(f"Вы выбрали {brand} {model} \nВаш бюджет:{price}")
 @router.message(F.text == "📦 Мои подписки")
 async def Find(message:Message):
-    await message.answer(f"No signal")
+    subs = await select_sub(message.from_user.id)
+    if not subs:
+        await message.answer("У вас пока нет активных подписок.")
+    else:
+        text = "Ваши подписки:\n"
+        for brand, model, price in subs:
+            text += f"🚗 {brand} {model} — до {price} $\n"
+        await message.answer(text)
 @router.message(F.text == "🔔 Настроить радар")
 async def Find(message:Message):
     await message.answer(f"No signal")
