@@ -1,0 +1,502 @@
+[
+    {
+      "id": 1,
+      "brand": "BMW",
+      "model": "M5 F90",
+      "year": 2021,
+      "price_usd": 85000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Рестайлинг, Competition, родной пробег 25к км, на гарантии.",
+      "photo_url": "https://example.com/photos/m5_f90.jpg"
+    },
+    {
+      "id": 2,
+      "brand": "Lexus",
+      "model": "LX 570",
+      "year": 2019,
+      "price_usd": 72000,
+      "engine": "5.7L V8",
+      "description": "Черный на черном, Black Vision, полная комплектация, один владелец.",
+      "photo_url": "https://example.com/photos/lx570.jpg"
+    },
+    {
+      "id": 3,
+      "brand": "BMW",
+      "model": "X5 M",
+      "year": 2020,
+      "price_usd": 79000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Панорама, лазерные фары, выхлоп Akrapovic, затянут в матовую пленку.",
+      "photo_url": "https://example.com/photos/x5m.jpg"
+    },
+    {
+      "id": 4,
+      "brand": "Lexus",
+      "model": "RX 350",
+      "year": 2022,
+      "price_usd": 58000,
+      "engine": "3.5L V6",
+      "description": "Комплектация F-Sport, панорамная крыша, музыка Mark Levinson.",
+      "photo_url": "https://example.com/photos/rx350.jpg"
+    },
+    {
+      "id": 5,
+      "brand": "Mercedes-Benz",
+      "model": "E63 AMG",
+      "year": 2020,
+      "price_usd": 95000,
+      "engine": "4.0L V8 BiTurbo",
+      "description": "Полный сток, без ДТП, керамические тормоза, салон десиньо.",
+      "photo_url": "https://example.com/photos/e63.jpg"
+    },
+    {
+      "id": 6,
+      "brand": "BMW",
+      "model": "M4 F82",
+      "year": 2018,
+      "price_usd": 48000,
+      "engine": "3.0L L6 Twin-Turbo",
+      "description": "На механике! Идеальный снаряд для трека, карбон-керамика.",
+      "photo_url": "https://example.com/photos/m4_f82.jpg"
+    },
+    {
+      "id": 7,
+      "brand": "Lexus",
+      "model": "IS 350",
+      "year": 2021,
+      "price_usd": 42000,
+      "engine": "3.5L V6",
+      "description": "Стильный седан, задний привод, состояние новой машины.",
+      "photo_url": "https://example.com/photos/is350.jpg"
+    },
+    {
+      "id": 8,
+      "brand": "Porsche",
+      "model": "911 Carrera S",
+      "year": 2020,
+      "price_usd": 125000,
+      "engine": "3.0L Flat-6 Twin-Turbo",
+      "description": "Кузов 992, цвет Crayon, спортивный выхлоп, подруливающая задняя ось.",
+      "photo_url": "https://example.com/photos/p911.jpg"
+    },
+    {
+      "id": 9,
+      "brand": "Audi",
+      "model": "RS6 Avant",
+      "year": 2021,
+      "price_usd": 110000,
+      "engine": "4.0L V8 BiTurbo",
+      "description": "Лютый универсал, 600 сил в стоке, лазерный свет, полный сток.",
+      "photo_url": "https://example.com/photos/rs6.jpg"
+    },
+    {
+      "id": 10,
+      "brand": "Toyota",
+      "model": "Camry 70",
+      "year": 2019,
+      "price_usd": 27000,
+      "engine": "3.5L V6",
+      "description": "Европеец, комплектация Люкс, не бита, не крашена, торг у капота.",
+      "photo_url": "https://example.com/photos/camry70.jpg"
+    },
+    {
+      "id": 11,
+      "brand": "BMW",
+      "model": "M5 CS",
+      "year": 2022,
+      "price_usd": 145000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Лимитированная версия, Карбоновые ковши, 635 л.с., коллекционное состояние.",
+      "photo_url": "https://example.com/photos/m5_cs.jpg"
+    },
+    {
+      "id": 12,
+      "brand": "Lexus",
+      "model": "GS F",
+      "year": 2017,
+      "price_usd": 55000,
+      "engine": "5.0L V8 N/A",
+      "description": "Последний атмосферный V8 от Лексуса. Легендарная надежность и звук.",
+      "photo_url": "https://example.com/photos/gsf.jpg"
+    },
+    {
+      "id": 13,
+      "brand": "Nissan",
+      "model": "GT-R R35",
+      "year": 2017,
+      "price_usd": 89000,
+      "engine": "3.8L V6 Twin-Turbo",
+      "description": "Годзилла, Stage 2 (700 л.с.), коробка усилена, готов к замерам.",
+      "photo_url": "https://example.com/photos/gtr35.jpg"
+    },
+    {
+      "id": 14,
+      "brand": "Mercedes-Benz",
+      "model": "G63 AMG",
+      "year": 2021,
+      "price_usd": 185000,
+      "engine": "4.0L V8 BiTurbo",
+      "description": "Гелик в обвесе Brabus, выхлоп с регулировкой громкости, салон Exclusive.",
+      "photo_url": "https://example.com/photos/g63.jpg"
+    },
+    {
+      "id": 15,
+      "brand": "Toyota",
+      "model": "Supra A90",
+      "year": 2020,
+      "price_usd": 59000,
+      "engine": "3.0L L6 Turbo",
+      "description": "Мотор B58, задний привод, идеальная развесовка, яркий желтый цвет.",
+      "photo_url": "https://example.com/photos/supra.jpg"
+    },
+    {
+      "id": 16,
+      "brand": "BMW",
+      "model": "340i G20",
+      "year": 2021,
+      "price_usd": 45000,
+      "engine": "3.0L L6 Turbo",
+      "description": "M-Performance, xDrive, цвет Портимао Блу, идеальный вариант на каждый день.",
+      "photo_url": "https://example.com/photos/340i.jpg"
+    },
+    {
+      "id": 17,
+      "brand": "Lexus",
+      "model": "LC 500",
+      "year": 2020,
+      "price_usd": 92000,
+      "engine": "5.0L V8",
+      "description": "Футуристичное купе, красный кожаный салон, звук мотора — космос.",
+      "photo_url": "https://example.com/photos/lc500.jpg"
+    },
+    {
+      "id": 18,
+      "brand": "Mercedes-Benz",
+      "model": "C63s AMG",
+      "year": 2019,
+      "price_usd": 68000,
+      "engine": "4.0L V8 BiTurbo",
+      "description": "Купе, задний привод, панорама, ковши AMG, машина дарит дикие эмоции.",
+      "photo_url": "https://example.com/photos/c63s.jpg"
+    },
+    {
+      "id": 19,
+      "brand": "Porsche",
+      "model": "Macan GTS",
+      "year": 2021,
+      "price_usd": 74000,
+      "engine": "2.9L V6 Twin-Turbo",
+      "description": "Пневмоподвеска, спортивный хронопакет, идеальный городской кроссовер.",
+      "photo_url": "https://example.com/photos/macan.jpg"
+    },
+    {
+      "id": 20,
+      "brand": "Chevrolet",
+      "model": "Corvette C8",
+      "year": 2021,
+      "price_usd": 88000,
+      "engine": "6.2L V8",
+      "description": "Среднемоторный суперкар, съемная крыша (тарга), пробег 8к миль.",
+      "photo_url": "https://example.com/photos/c8.jpg"
+    },
+    {
+      "id": 21,
+      "brand": "BMW",
+      "model": "M5 F10",
+      "year": 2014,
+      "price_usd": 35000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Живая легенда, мотор после капиталки (все чеки есть), новые турбины.",
+      "photo_url": "https://example.com/photos/m5_f10.jpg"
+    },
+    {
+      "id": 22,
+      "brand": "Lexus",
+      "model": "NX 200t",
+      "year": 2017,
+      "price_usd": 29000,
+      "engine": "2.0L L4 Turbo",
+      "description": "Надежный кроссовер, бережная эксплуатация дом-работа, зимняя резина в подарок.",
+      "photo_url": "https://example.com/photos/nx200.jpg"
+    },
+    {
+      "id": 23,
+      "brand": "Audi",
+      "model": "R8 V10",
+      "year": 2018,
+      "price_usd": 130000,
+      "engine": "5.2L V10 N/A",
+      "description": "Атмосферный монстр, полный привод Quattro, карбоновый обвес.",
+      "photo_url": "https://example.com/photos/r8.jpg"
+    },
+    {
+      "id": 24,
+      "brand": "Nissan",
+      "model": "Skyline R34 GTR",
+      "year": 1999,
+      "price_usd": 160000,
+      "engine": "2.6L RB26DETT",
+      "description": "Настоящая JDM легенда, правый руль, полностью отреставрирован, сток.",
+      "photo_url": "https://example.com/photos/r34.jpg"
+    },
+    {
+      "id": 25,
+      "brand": "Subaru",
+      "model": "WRX STI",
+      "year": 2019,
+      "price_usd": 38000,
+      "engine": "2.5L EJ257",
+      "description": "Постоянный полный привод, тормоза Brembo, культовый синий цвет.",
+      "photo_url": "https://example.com/photos/sti.jpg"
+    },
+    {
+      "id": 26,
+      "brand": "Toyota",
+      "model": "Land Cruiser 300",
+      "year": 2022,
+      "price_usd": 98000,
+      "engine": "3.5L V6 Twin-Turbo",
+      "description": "Комплектация 70th Anniversary, бензин, белый жемчуг, идеален для бездорожья.",
+      "photo_url": "https://example.com/photos/lc300.jpg"
+    },
+    {
+      "id": 27,
+      "brand": "BMW",
+      "model": "M3 G80",
+      "year": 2021,
+      "price_usd": 82000,
+      "engine": "3.0L L6 Twin-Turbo",
+      "description": "Кузов в сером мате, полный привод xDrive, ковши карбон, пробег 12к.",
+      "photo_url": "https://example.com/photos/m3_g80.jpg"
+    },
+    {
+      "id": 28,
+      "brand": "Lexus",
+      "model": "ES 250",
+      "year": 2020,
+      "price_usd": 39000,
+      "engine": "2.5L L4",
+      "description": "Комфортный седан бизнес-класса, панорама, один хозяин, очень экономичный.",
+      "photo_url": "https://example.com/photos/es250.jpg"
+    },
+    {
+      "id": 29,
+      "brand": "Ford",
+      "model": "Mustang GT",
+      "year": 2019,
+      "price_usd": 34000,
+      "engine": "5.0L V8 Coyote",
+      "description": "Чистокровный американец, громкий выхлоп, черный кузов, обслужен.",
+      "photo_url": "https://example.com/photos/mustang.jpg"
+    },
+    {
+      "id": 30,
+      "brand": "Dodge",
+      "model": "Challenger Hellcat",
+      "year": 2020,
+      "price_usd": 75000,
+      "engine": "6.2L V8 Supercharged",
+      "description": "717 лошадиных сил, дикий компрессорный свист, задний привод, для ценителей.",
+      "photo_url": "https://example.com/photos/hellcat.jpg"
+    },
+    {
+      "id": 31,
+      "brand": "Tesla",
+      "model": "Model S Plaid",
+      "year": 2021,
+      "price_usd": 89000,
+      "engine": "Electric (1020 hp)",
+      "description": "Разгон до сотни за 2 секунды, штурвал вместо руля, запас хода 600+ км.",
+      "photo_url": "https://example.com/photos/model_s.jpg"
+    },
+    {
+      "id": 32,
+      "brand": "Porsche",
+      "model": "Cayenne Coupe GTS",
+      "year": 2021,
+      "price_usd": 105000,
+      "engine": "4.0L V8 Twin-Turbo",
+      "description": "Спортивный кросс-купе, цвет лава оранж, выхлоп GTS, идеальный салон.",
+      "photo_url": "https://example.com/photos/cayenne.jpg"
+    },
+    {
+      "id": 33,
+      "brand": "Audi",
+      "model": "e-tron GT",
+      "year": 2021,
+      "price_usd": 78000,
+      "engine": "Electric",
+      "description": "Футуристичный электрокар, полный привод, состояние нового авто.",
+      "photo_url": "https://example.com/photos/etron.jpg"
+    },
+    {
+      "id": 34,
+      "brand": "Mercedes-Benz",
+      "model": "S560 W222",
+      "year": 2018,
+      "price_usd": 65000,
+      "engine": "4.0L V8 BiTurbo",
+      "description": "Рестайлинг, обвес AMG, салон nappa, массаж, вентиляция всех сидений.",
+      "photo_url": "https://example.com/photos/s560.jpg"
+    },
+    {
+      "id": 35,
+      "brand": "BMW",
+      "model": "750i G12",
+      "year": 2020,
+      "price_usd": 73000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Long версия, лазерная оптика, executive drive, задний пакет с планшетом.",
+      "photo_url": "https://example.com/photos/750i.jpg"
+    },
+    {
+      "id": 36,
+      "brand": "Lexus",
+      "model": "GX 460",
+      "year": 2018,
+      "price_usd": 51000,
+      "engine": "4.6L V8",
+      "description": "Рамный внедорожник, белый кузов, темный салон, три ряда сидений.",
+      "photo_url": "https://example.com/photos/gx460.jpg"
+    },
+    {
+      "id": 37,
+      "brand": "Jeep",
+      "model": "Grand Cherokee Trackhawk",
+      "year": 2019,
+      "price_usd": 83000,
+      "engine": "6.2L V8 Supercharged",
+      "description": "Внедорожник с мотором от Hellcat, полный привод, разгон 3.5 сек.",
+      "photo_url": "https://example.com/photos/trackhawk.jpg"
+    },
+    {
+      "id": 38,
+      "brand": "Volkswagen",
+      "model": "Golf R",
+      "year": 2021,
+      "price_usd": 44000,
+      "engine": "2.0L L4 Turbo",
+      "description": "Полный привод 4Motion, режим дрифта, синий фирменный цвет Lapiz Blue.",
+      "photo_url": "https://example.com/photos/golf_r.jpg"
+    },
+    {
+      "id": 39,
+      "brand": "Hyundai",
+      "model": "Elantra",
+      "year": 2022,
+      "price_usd": 21000,
+      "engine": "2.0L L4",
+      "description": "Свежая городская машина, комплектация предмаксимальная, один владелец.",
+      "photo_url": "https://example.com/photos/elantra.jpg"
+    },
+    {
+      "id": 40,
+      "brand": "Kia",
+      "model": "K5",
+      "year": 2021,
+      "price_usd": 24000,
+      "engine": "2.5L L4",
+      "description": "Комплектация GT-Line, панорамная крыша, цифровая приборная панель.",
+      "photo_url": "https://example.com/photos/kia_k5.jpg"
+    },
+    {
+      "id": 41,
+      "brand": "BMW",
+      "model": "M2 F87",
+      "year": 2019,
+      "price_usd": 46000,
+      "engine": "3.0L L6 Twin-Turbo",
+      "description": "M2 Competition, идеальная развесовка, чистый даритель эмоций.",
+      "photo_url": "https://example.com/photos/m2_f87.jpg"
+    },
+    {
+      "id": 42,
+      "brand": "Lexus",
+      "model": "RC F",
+      "year": 2016,
+      "price_usd": 49000,
+      "engine": "5.0L V8",
+      "description": "Заряженное купе, карбоновый капот и спойлер, музыка Mark Levinson.",
+      "photo_url": "https://example.com/photos/rcf.jpg"
+    },
+    {
+      "id": 43,
+      "brand": "Aston Martin",
+      "model": "Vantage",
+      "year": 2019,
+      "price_usd": 115000,
+      "engine": "4.0L V8 Twin-Turbo",
+      "description": "Английский стиль, мотор от AMG, идеальные пропорции, цвет кузова Lime Essence.",
+      "photo_url": "https://example.com/photos/vantage.jpg"
+    },
+    {
+      "id": 44,
+      "brand": "Mercedes-Benz",
+      "model": "CLS 53 AMG",
+      "year": 2020,
+      "price_usd": 71000,
+      "engine": "3.0L L6 Turbo",
+      "description": "Стильное 4-дверное купе, мягкий гибрид, музыка Burmester, идеальное состояние.",
+      "photo_url": "https://example.com/photos/cls53.jpg"
+    },
+    {
+      "id": 45,
+      "brand": "Jaguar",
+      "model": "F-Type R",
+      "year": 2018,
+      "price_usd": 53000,
+      "engine": "5.0L V8 Supercharged",
+      "description": "Полный привод, безумный рык выхлопа, панорама, акустика Meridian.",
+      "photo_url": "https://example.com/photos/ftype.jpg"
+    },
+    {
+      "id": 46,
+      "brand": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": 2020,
+      "price_usd": 67000,
+      "engine": "3.0L Diesel",
+      "description": "Комплектация HSE Dynamic, пневмоподвеска, черный пакет обвеса.",
+      "photo_url": "https://example.com/photos/rrs.jpg"
+    },
+    {
+      "id": 47,
+      "brand": "Porsche",
+      "model": "Panamera 4S",
+      "year": 2018,
+      "price_usd": 69000,
+      "engine": "2.9L V6 Twin-Turbo",
+      "description": "Полный привод, салон из белой кожи, спойлер-трансформер, обслужен в Porsche Centre.",
+      "photo_url": "https://example.com/photos/panamera.jpg"
+    },
+    {
+      "id": 48,
+      "brand": "Mazda",
+      "model": "RX-7 FD",
+      "year": 1997,
+      "price_usd": 45000,
+      "engine": "1.3L Роторный Twin-Turbo",
+      "description": "Легендарный ротор 13B, идеальный кузов, правый руль, для истинных JDM фанатов.",
+      "photo_url": "https://example.com/photos/rx7.jpg"
+    },
+    {
+      "id": 49,
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2021,
+      "price_usd": 32000,
+      "engine": "2.8L Diesel",
+      "description": "Неубиваемый пикап, кунг в комплекте, идеален для гор и активного отдыха.",
+      "photo_url": "https://example.com/photos/hilux.jpg"
+    },
+    {
+      "id": 50,
+      "brand": "BMW",
+      "model": "M8 Gran Coupe",
+      "year": 2021,
+      "price_usd": 118000,
+      "engine": "4.4L V8 Twin-Turbo",
+      "description": "Флагман линейки M, Competition, максимальная комплектация, цвет Brands Hatch Grey.",
+      "photo_url": "https://example.com/photos/m8.jpg"
+    }
+  ]
