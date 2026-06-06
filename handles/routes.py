@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from datebase.sql_select import init_first_db,init_second_db,add_users,add_ann,select_sub
 from handles import Findcar
-from handles.State import group
+from handles.State import group,static
 import aiogram
 router=Router()
 @router.message(Command("start"))
@@ -43,7 +43,7 @@ async def Model(message:Message,state:FSMContext):
     await message.answer(f"Какой ваш бюджет?\nЕсли хотите отменит нажмите /channel")
     await state.set_state(group.price)
 @router.message(group.price)
-async def Model(message:Message,state:FSMContext):
+async def price(message:Message,state:FSMContext):
     ID=message.from_user.id
     if not message.text.isdigit():
         return
@@ -55,7 +55,7 @@ async def Model(message:Message,state:FSMContext):
     await add_ann(ID,brand,model,price)
     await message.answer(f"Вы выбрали {brand} {model} \nВаш бюджет:{price}")
 @router.message(F.text == "📦 Мои подписки")
-async def Find(message:Message):
+async def sub(message:Message):
     subs = await select_sub(message.from_user.id)
     if not subs:
         await message.answer("У вас пока нет активных подписок.")
@@ -65,8 +65,37 @@ async def Find(message:Message):
             text += f"🚗 {brand} {model} — до {price} $\n"
         await message.answer(text)
 @router.message(F.text == "🔔 Настроить радар")
-async def Find(message:Message):
+async def setting(message:Message):
     await message.answer(f"No signal")
 @router.message(F.text == "📊 Статистика рынка")
-async def Find(message:Message):
-    await message.answer(f"No signal")
+async def stat(message:Message,state:FSMContext):
+    await message.answer("Выберите один из них!", reply_markup=Findcar.get_cars_info_keyboard().as_markup(resize_keyboard=True))
+    await state.set_state(static.choose)
+@router.message(static.choose)
+async def chos(message:Message,state:FSMContext):
+    if message.text=="Общие цифры рынка":
+        pass
+    elif message.text=="Статистика по брендам (Топ-3 на нашей площадке)":
+        pass
+    elif message.text=="Средняя цена по конкретным моделям (Для фанатов)":
+        await state.update_data(car=True)
+        await state.set_state(static.brand)
+        await message.answer(f"Какую марка вам нужно?\nЕсли хотите отменит нажмите /channel",reply_markup=Findcar.get_car_brand_keyboard().as_markup(resize_keyboard=True))
+    else:return
+@router.message(static.brand)
+async def brand(message:Message,state:FSMContext):
+    if not message.text in list(Findcar.bran_model.keys()):
+        return
+    await state.update_data(brand=message.text)
+    await message.answer(f"Какую модель вам нужно?\nЕсли хотите отменит нажмите /channel",reply_markup=Findcar.get_car_model_keyboard(message.text).as_markup(resize_keyboard=True))
+    await state.set_state(static.model)
+@router.message(static.model)
+async def Model(message:Message,state:FSMContext):
+    data= await state.get_data()
+    model=message.text
+    brand=data.get("brand")
+    if Findcar.proverka(brand,model):
+        return
+    avr=Findcar.avr_car(brand,model)
+    await state.clear()
+    await message.answer(f"{brand} {model} среднем продается за:{avr}")

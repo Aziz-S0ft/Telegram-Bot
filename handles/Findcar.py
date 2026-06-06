@@ -35,3 +35,17 @@ def get_car_model_keyboard(brand):
 def proverka(brand,model):
     if model in bran_model.get(brand, set()): return False
     else:return True
+def get_cars_info_keyboard():
+    info_cars=ReplyKeyboardBuilder()
+    info_cars.add(KeyboardButton(text="Общие цифры рынка"))
+    info_cars.add(KeyboardButton(text="Статистика по брендам (Топ-3 на нашей площадке)"))
+    info_cars.add(KeyboardButton(text="Средняя цена по конкретным моделям (Для фанатов)"))
+    info_cars.adjust(1)
+    return info_cars
+def avr_car(brand,model):
+    sum=0;count=0
+    for i in data:
+        if i["brand"]==brand and i["model"]==model:
+            sum+=i["price_usd"]
+            count+=1
+    return sum//count
