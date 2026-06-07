@@ -35,3 +35,7 @@ async def select_sub(user_id):
         cousor =await db.execute("SELECT car_brand,car_model,max_price FROM subscriptions WHERE user_id =?;",(user_id,))
         rows = await cousor.fetchall()
         return rows
+async def del_sub(user_id,brand,model,price):
+    async with aiosqlite.connect(DB_SUB) as db:
+        await db.execute("DELETE FROM subscriptions WHERE user_id=? AND car_brand=? AND car_model=? AND max_price=?",(user_id,brand,model,price))
+        await db.commit()

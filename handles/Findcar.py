@@ -49,3 +49,23 @@ def avr_car(brand,model):
             sum+=i["price_usd"]
             count+=1
     return sum//count
+def top_brands() -> list:
+    brands = {}
+    for i in data:
+        if i["brand"] in brands:
+            brands[i["brand"]] += 1
+        else:
+            brands[i["brand"]] = 1
+    top_b3 = sorted(brands.items(), key=lambda item: item[1], reverse=True)[:3]
+    return [item[0] for item in top_b3]
+def build_sub(sub):
+    build=ReplyKeyboardBuilder()
+    for brand, model, price in sub:
+        build.add(KeyboardButton(text=f"🚗  {brand}  {model}  —  до  {price}  $\n"))
+    build.adjust(1)
+    return build
+def prov_del_sub(sub,del_sub:str):
+    del_sub=del_sub.split(sep='  ')
+    if any(del_sub[1] in i[0] for i in sub) and any(del_sub[2] in i[1] for i in sub):
+        return True
+    return False

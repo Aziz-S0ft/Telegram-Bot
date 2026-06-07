@@ -3,15 +3,15 @@ from aiogram.filters import Command
 from aiogram.types import Message,ReplyKeyboardMarkup,KeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-from datebase.sql_select import init_first_db,init_second_db,add_users,add_ann,select_sub
+from datebase.sql_select import init_first_db,init_second_db,add_users,add_ann,select_sub,del_sub
 from handles import Findcar
-from handles.State import group,static
+from handles.State import group,static,delete_car
 import aiogram
 router=Router()
 @router.message(Command("start"))
 async def Start(message:Message):
-    await init_first_db()  #исползвал один раз
-    await init_second_db() 
+    #await init_first_db()  #исползвал один раз
+    #await init_second_db() 
     name= message.from_user.first_name
     ID=message.from_user.id
     await add_users(ID,name)
@@ -46,6 +46,7 @@ async def Model(message:Message,state:FSMContext):
 async def price(message:Message,state:FSMContext):
     ID=message.from_user.id
     if not message.text.isdigit():
+        await message.answer("Пишите только цифры!")
         return
     data= await state.get_data()
     model=data.get("model")
@@ -62,11 +63,28 @@ async def sub(message:Message):
     else:
         text = "Ваши подписки:\n"
         for brand, model, price in subs:
-            text += f"🚗 {brand} {model} — до {price} $\n"
+            text += f"🚗 {brand} {model} — за {price} $\n"
         await message.answer(text)
 @router.message(F.text == "🔔 Настроить радар")
-async def setting(message:Message):
-    await message.answer(f"No signal")
+async def delete_sub(message:Message,state:FSMContext):
+    await state.set_state(delete_car.which)
+    subs = await select_sub(message.from_user.id)
+    if not subs:
+        await message.answer("У вас пока нет активных подписок.")
+    else:
+        await message.answer("Какую вы хотите удалить?",reply_markup=Findcar.build_sub(subs).as_markup(resize_keyboard=True))
+@router.message(delete_car.which)
+async def which_sub(message:Message,state:FSMContext):
+    subs = await select_sub(message.from_user.id)
+    if Findcar.prov_del_sub(subs,message.text):
+        await message.answer("Успешно удаленно!")
+        sub_chose=message.text.split(sep='  ')
+        user_id=message.from_user.id
+        await del_sub(user_id,sub_chose[1],sub_chose[2],sub_chose[5])
+        await state.clear()
+    else :
+        await message.answer("Извените такой подписка не нашлось")
+        return
 @router.message(F.text == "📊 Статистика рынка")
 async def stat(message:Message,state:FSMContext):
     await message.answer("Выберите один из них!", reply_markup=Findcar.get_cars_info_keyboard().as_markup(resize_keyboard=True))
@@ -76,7 +94,9 @@ async def chos(message:Message,state:FSMContext):
     if message.text=="Общие цифры рынка":
         pass
     elif message.text=="Статистика по брендам (Топ-3 на нашей площадке)":
-        pass
+        top_3b=Findcar.top_brands()
+        await message.answer(f"Топ 1 бренд:{top_3b[0]} \nTоп 2 бренд:{top_3b[1]}\nТоп 3 бренд:{top_3b[2]}")
+        await state.clear()
     elif message.text=="Средняя цена по конкретным моделям (Для фанатов)":
         await state.update_data(car=True)
         await state.set_state(static.brand)

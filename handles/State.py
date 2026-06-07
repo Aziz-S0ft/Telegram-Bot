@@ -7,3 +7,5 @@ class static(StatesGroup):
     choose=State()
     brand=State()
     model=State()
+class delete_car(StatesGroup):
+    which=State()
