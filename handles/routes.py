@@ -55,6 +55,14 @@ async def price(message:Message,state:FSMContext):
     await state.clear()
     await add_ann(ID,brand,model,price)
     await message.answer(f"Вы выбрали {brand} {model} \nВаш бюджет:{price}")
+    cars_info,images=Findcar.info_from_cars(brand,model,price)
+    if cars_info:
+        await message.answer("Мы нашли такие варианты\n")
+        for i in zip(cars_info,images):
+            await message.answer_photo(i[1],caption=i[0])
+    else:await message.answer('Мы не нашли хорошие варианты')
+
+
 @router.message(F.text == "📦 Мои подписки")
 async def sub(message:Message):
     subs = await select_sub(message.from_user.id)

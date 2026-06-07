@@ -69,3 +69,11 @@ def prov_del_sub(sub,del_sub:str):
     if any(del_sub[1] in i[0] for i in sub) and any(del_sub[2] in i[1] for i in sub):
         return True
     return False
+def info_from_cars(brand,model,price):
+    sell_cars=[]
+    photos_url=[]
+    for i in data:
+        if i["brand"]==brand and i["model"]==model and i["price_usd"]<=price:
+            sell_cars.append(f"{i['brand']} {i['model']} {i['engine']} \nГод выпуска:{i['year']} \nЦена:{i['price_usd']}\nОписание:{i['description']}")
+            photos_url.append(i['photo_url'])
+    return sell_cars,photos_url
