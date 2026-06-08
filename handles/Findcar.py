@@ -1,6 +1,7 @@
 from aiogram.types import Message,ReplyKeyboardMarkup,KeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-import json
+from handles.getapi import get_info
+import asyncio
 def get_main_reply_keyboard():
     keyboard=ReplyKeyboardMarkup(
         keyboard=[
@@ -10,10 +11,8 @@ def get_main_reply_keyboard():
         resize_keyboard=True
     )
     return keyboard
-with open ("data.json","r",encoding="utf-8" ) as f :
-    data = json.load(f)
+data= asyncio.run(get_info())
 bran_model={}
-
 for i in data:
     if not i["brand"] in bran_model:
         bran_model[i["brand"]]=set()
