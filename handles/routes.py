@@ -1,12 +1,12 @@
 from aiogram import Router,F
 from aiogram.filters import Command
-from aiogram.types import Message,ReplyKeyboardMarkup,KeyboardButton
+from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from datebase.sql_select import init_first_db,init_second_db,add_users,add_ann,select_sub,del_sub
 from handles import Findcar
 from handles.State import group,static,delete_car
-import aiogram
+from fastapi import APIRouter
+app = APIRouter()
 router=Router()
 @router.message(Command("start"))
 async def Start(message:Message):
@@ -61,8 +61,6 @@ async def price(message:Message,state:FSMContext):
         for i in zip(cars_info,images):
             await message.answer_photo(i[1],caption=i[0])
     else:await message.answer('Мы не нашли хорошие варианты')
-
-
 @router.message(F.text == "📦 Мои подписки")
 async def sub(message:Message):
     subs = await select_sub(message.from_user.id)
@@ -127,3 +125,6 @@ async def Model(message:Message,state:FSMContext):
     avr=Findcar.avr_car(brand,model)
     await state.clear()
     await message.answer(f"{brand} {model} среднем продается за:{avr}")
+@app.post("/newcar")
+def add_car():
+    return {"ok": True}

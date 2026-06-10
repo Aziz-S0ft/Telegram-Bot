@@ -19,6 +19,7 @@ async def init_second_db():
                          car_brand TEXT NOT NULL,
                          car_model TEXT NOT NULL,
                          max_price INTEGER,
+                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                          FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE );
          """)
         await db.commit()
@@ -39,3 +40,11 @@ async def del_sub(user_id,brand,model,price):
     async with aiosqlite.connect(DB_SUB) as db:
         await db.execute("DELETE FROM subscriptions WHERE user_id=? AND car_brand=? AND car_model=? AND max_price=?",(user_id,brand,model,price))
         await db.commit()
+async def find_cars(brand,model)->dict:
+    async with aiosqlite.connect(DB_SUB) as db:
+        cousor=await db.execute("SELECT user_id,max_price FROM subscriptions WHERE car_brand=? AND car_model=?",(brand,model))
+        rows= await cousor.fetchall()
+        people={}
+        for user_id,max_price in rows:
+            people[user_id]=max_price
+        return people
